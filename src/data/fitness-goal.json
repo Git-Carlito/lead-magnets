@@ -1,0 +1,77 @@
+{
+  "slug": "fitness-goal",
+  "title": "What's Your Fitness Goal?",
+  "description": "Take this quick quiz to discover the training approach that fits your lifestyle and goals.",
+  "questions": [
+    {
+      "id": "goal",
+      "question": "What's your primary fitness goal?",
+      "options": [
+        { "label": "Lose weight and tone up", "value": "weight-loss" },
+        { "label": "Build muscle and strength", "value": "muscle" },
+        { "label": "Improve endurance and stamina", "value": "endurance" },
+        { "label": "Feel better and reduce stress", "value": "wellness" }
+      ]
+    },
+    {
+      "id": "experience",
+      "question": "How would you describe your current fitness level?",
+      "options": [
+        { "label": "Complete beginner", "value": "beginner" },
+        { "label": "I work out occasionally", "value": "intermediate" },
+        { "label": "I train regularly", "value": "advanced" }
+      ]
+    },
+    {
+      "id": "frequency",
+      "question": "How many days per week can you train?",
+      "options": [
+        { "label": "1-2 days", "value": "1-2" },
+        { "label": "3-4 days", "value": "3-4" },
+        { "label": "5+ days", "value": "5+" }
+      ]
+    },
+    {
+      "id": "preference",
+      "question": "What type of training appeals to you most?",
+      "options": [
+        { "label": "Gym / weight training", "value": "gym" },
+        { "label": "Outdoor / bodyweight", "value": "outdoor" },
+        { "label": "Group classes / coaching", "value": "group" },
+        { "label": "Home workouts", "value": "home" }
+      ]
+    },
+    {
+      "id": "obstacle",
+      "question": "What's your biggest challenge right now?",
+      "options": [
+        { "label": "Lack of time", "value": "time" },
+        { "label": "Don't know where to start", "value": "knowledge" },
+        { "label": "Staying motivated", "value": "motivation" },
+        { "label": "Past injuries or limitations", "value": "injuries" }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "key": "structured-strength",
+      "title": "Structured Strength Program",
+      "description": "Based on your answers, you'd benefit from a structured strength training plan tailored to your schedule. A progressive program with clear milestones will keep you motivated and help you build real, lasting results."
+    },
+    {
+      "key": "active-lifestyle",
+      "title": "Active Lifestyle Coaching",
+      "description": "You're looking for a balanced approach that fits into a busy life. A flexible coaching plan combining short, effective workouts with habit-building strategies will help you feel your best without overwhelming your schedule."
+    },
+    {
+      "key": "performance-boost",
+      "title": "Performance Boost Plan",
+      "description": "You're ready to take your fitness to the next level. A periodized training plan with progressive overload and recovery management will help you break through plateaus and reach peak performance."
+    },
+    {
+      "key": "wellness-reset",
+      "title": "Wellness Reset Program",
+      "description": "Your focus is on feeling great and building sustainable habits. A gentle, progressive program combining movement, mobility, and stress management will help you create a foundation for long-term health."
+    }
+  ]
+}

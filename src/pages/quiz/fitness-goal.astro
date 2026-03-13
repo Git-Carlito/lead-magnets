@@ -1,0 +1,16 @@
+---
+import LeadMagnetLayout from "@/layouts/LeadMagnetLayout.astro";
+import { QuizShell } from "@/components/quiz/QuizShell";
+import { fitnessGoalQuiz } from "@/data/fitness-goal";
+---
+
+<LeadMagnetLayout
+  title={fitnessGoalQuiz.title}
+  description={fitnessGoalQuiz.description}
+>
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold mb-2">{fitnessGoalQuiz.title}</h1>
+    <p class="text-muted-foreground">{fitnessGoalQuiz.description}</p>
+  </div>
+  <QuizShell quiz={fitnessGoalQuiz} client:load />
+</LeadMagnetLayout>
