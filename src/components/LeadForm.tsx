@@ -24,22 +24,22 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
     },
     onSubmit: async ({ value }) => {
       const parsed = leadSchema.parse(value);
-      await getSupabase().from("leads").insert({
-        name: parsed.name,
-        email: parsed.email,
-        phone: parsed.phone || null,
-        lead_magnet: leadMagnet,
-        answers,
-        result,
-      });
+      await getSupabase()
+        .from("leads")
+        .insert({
+          name: parsed.name,
+          email: parsed.email,
+          phone: parsed.phone || null,
+          lead_magnet: leadMagnet,
+          answers,
+          result,
+        });
     },
   });
 
   return (
     <div className="rounded-xl border bg-card p-6 text-card-foreground shadow-sm">
-      <h3 className="mb-4 text-lg font-semibold">
-        Get your personalized plan
-      </h3>
+      <h3 className="mb-4 text-lg font-semibold">Get your personalized plan</h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -55,10 +55,7 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
         >
           {(field) => (
             <div>
-              <label
-                htmlFor={field.name}
-                className="mb-1 block text-sm font-medium"
-              >
+              <label htmlFor={field.name} className="mb-1 block text-sm font-medium">
                 Name
               </label>
               <input
@@ -87,10 +84,7 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
         >
           {(field) => (
             <div>
-              <label
-                htmlFor={field.name}
-                className="mb-1 block text-sm font-medium"
-              >
+              <label htmlFor={field.name} className="mb-1 block text-sm font-medium">
                 Email
               </label>
               <input
@@ -115,12 +109,8 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
         <form.Field name="phone">
           {(field) => (
             <div>
-              <label
-                htmlFor={field.name}
-                className="mb-1 block text-sm font-medium"
-              >
-                Phone{" "}
-                <span className="text-muted-foreground">(optional)</span>
+              <label htmlFor={field.name} className="mb-1 block text-sm font-medium">
+                Phone <span className="text-muted-foreground">(optional)</span>
               </label>
               <input
                 id={field.name}
@@ -139,9 +129,7 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
         <form.Subscribe selector={(state) => [state.isSubmitting, state.isSubmitted]}>
           {([isSubmitting, isSubmitted]) =>
             isSubmitted ? (
-              <p className="text-center font-medium text-primary">
-                Thanks! Check your inbox.
-              </p>
+              <p className="text-center font-medium text-primary">Thanks! Check your inbox.</p>
             ) : (
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Get my results"}
