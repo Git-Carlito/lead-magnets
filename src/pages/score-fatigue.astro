@@ -1,0 +1,92 @@
+---
+// src/pages/score-fatigue.astro
+// Page du questionnaire "Score de Fatigue"
+// Design sombre inspiré de callscore.charbonnerie.com
+// Client cible : dirigeants 30-55 ans, en mal-être
+
+import "@/styles/globals.css";
+import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell";
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Découvre ton profil de fatigue en 8 questions — analyse personnalisée pour dirigeants."
+    />
+    <meta property="og:title" content="Score de Fatigue — Charles Denis" />
+    <meta
+      property="og:description"
+      content="8 questions pour identifier ton type de fatigue dominant et comprendre pourquoi tu n'avances plus."
+    />
+    <title>Score de Fatigue — Charles Denis</title>
+
+    <!-- Logo comme favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+  </head>
+
+  <body class="min-h-screen" style="background-color: #0A0A0A; color: white; font-family: 'Geist Variable', sans-serif;">
+
+    <!-- ── Header ─────────────────────────────────────────── -->
+    <header style="border-bottom: 1px solid #1A1A1A; padding: 20px 24px;">
+      <div style="max-width: 640px; margin: 0 auto;">
+        <a href="https://charlesdenis.fr/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="/logo.png"
+            alt="PERFORMEUR — Charles Denis"
+            style="height: 28px; width: auto; display: block;"
+          />
+        </a>
+      </div>
+    </header>
+
+    <!-- ── Intro ──────────────────────────────────────────── -->
+    <div style="max-width: 640px; margin: 0 auto; padding: 48px 24px 16px; text-align: center;">
+      <!-- Badge -->
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: #180000; border: 1px solid rgba(255,0,0,0.25); color: #FF9595; padding: 8px 16px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;">
+        <span>⚡</span>
+        <span>Diagnostic gratuit · 2 minutes</span>
+      </div>
+
+      <!-- Titre principal -->
+      <h1 style="font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px;">
+        Score de <span style="color: #FF0000;">Fatigue</span>
+      </h1>
+
+      <!-- Sous-titre -->
+      <p style="color: #9CA3AF; font-size: 1rem; max-width: 440px; margin: 0 auto 8px; line-height: 1.6;">
+        8 questions pour identifier ton type de fatigue dominant — et comprendre
+        pourquoi tu n'avances plus malgré tous tes efforts.
+      </p>
+
+      <!-- Social proof subtil -->
+      <p style="color: #4B5563; font-size: 12px; margin-top: 12px;">
+        Réservé aux dirigeants qui refusent de se contenter de "tenir".
+      </p>
+    </div>
+
+    <!-- ── Quiz ───────────────────────────────────────────── -->
+    <main style="max-width: 640px; margin: 0 auto; padding: 24px 24px 64px;">
+      <ScoreFatigueShell client:load />
+    </main>
+
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <footer style="text-align: center; padding: 32px 24px; border-top: 1px solid #1A1A1A;">
+      <p style="color: #374151; font-size: 12px;">
+        © 2026 Charles Denis — Coach pour dirigeants ·{" "}
+        <a
+          href="https://charlesdenis.fr/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color: #4B5563; text-decoration: none;"
+        >
+          charlesdenis.fr
+        </a>
+      </p>
+    </footer>
+
+  </body>
+</html>
