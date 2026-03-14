@@ -1,4 +1,5 @@
 import type { QuizData, QuizResult } from "@/lib/quiz-types";
+
 import quizJson from "./fitness-goal.json";
 
 function getResult(answers: Record<string, string>): QuizResult {

@@ -1,9 +1,11 @@
 import { useState } from "react";
+
+import { LeadForm } from "@/components/LeadForm";
 import type { QuizData } from "@/lib/quiz-types";
+
 import { ProgressBar } from "./ProgressBar";
 import { Question } from "./Question";
 import { ResultCard } from "./ResultCard";
-import { LeadForm } from "@/components/LeadForm";
 
 interface QuizShellProps {
   quiz: QuizData;

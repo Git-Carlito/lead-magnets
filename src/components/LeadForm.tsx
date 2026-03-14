@@ -1,5 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { z } from "zod";
+
 import { Button } from "@/components/ui/button";
 import { getSupabase } from "@/lib/supabase";
 
@@ -38,7 +39,7 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
   });
 
   return (
-    <div className="rounded-xl border bg-card p-6 text-card-foreground shadow-sm">
+    <div className="bg-card text-card-foreground rounded-xl border p-6 shadow-sm">
       <h3 className="mb-4 text-lg font-semibold">Get your personalized plan</h3>
       <form
         onSubmit={(e) => {
@@ -64,11 +65,11 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
-                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/50"
+                className="border-input bg-background focus:border-ring focus:ring-ring/50 w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2"
                 placeholder="Your name"
               />
               {field.state.meta.errors.length > 0 && (
-                <p className="mt-1 text-sm text-destructive">
+                <p className="text-destructive mt-1 text-sm">
                   {field.state.meta.errors[0]?.toString()}
                 </p>
               )}
@@ -94,11 +95,11 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
-                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/50"
+                className="border-input bg-background focus:border-ring focus:ring-ring/50 w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2"
                 placeholder="you@example.com"
               />
               {field.state.meta.errors.length > 0 && (
-                <p className="mt-1 text-sm text-destructive">
+                <p className="text-destructive mt-1 text-sm">
                   {field.state.meta.errors[0]?.toString()}
                 </p>
               )}
@@ -119,7 +120,7 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
-                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/50"
+                className="border-input bg-background focus:border-ring focus:ring-ring/50 w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2"
                 placeholder="+33 6 12 34 56 78"
               />
             </div>
@@ -129,7 +130,7 @@ export function LeadForm({ leadMagnet, answers, result }: LeadFormProps) {
         <form.Subscribe selector={(state) => [state.isSubmitting, state.isSubmitted]}>
           {([isSubmitting, isSubmitted]) =>
             isSubmitted ? (
-              <p className="text-center font-medium text-primary">Thanks! Check your inbox.</p>
+              <p className="text-primary text-center font-medium">Thanks! Check your inbox.</p>
             ) : (
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Get my results"}
