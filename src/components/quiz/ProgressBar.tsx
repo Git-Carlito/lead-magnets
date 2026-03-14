@@ -11,15 +11,15 @@ export function ProgressBar({ current, total, className }: ProgressBarProps) {
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="mb-1 flex justify-between text-sm text-muted-foreground">
+      <div className="text-muted-foreground mb-1 flex justify-between text-sm">
         <span>
           Question {current} of {total}
         </span>
         <span>{percent}%</span>
       </div>
-      <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
+      <div className="bg-secondary h-2 w-full overflow-hidden rounded-full">
         <div
-          className="h-full rounded-full bg-primary transition-all duration-300"
+          className="bg-primary h-full rounded-full transition-all duration-300"
           style={{ width: `${percent}%` }}
         />
       </div>
