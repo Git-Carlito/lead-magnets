@@ -54,12 +54,10 @@ export function GatePhase({
           phone: value.phone,
           leadMagnet: "sleep-score",
           resultKey: result?.key,
-          answers: Object.fromEntries(
-            QUESTIONS.filter((q) => answers[q.id]).map((q) => [
-              q.question,
-              q.options.find((o) => o.value === answers[q.id])?.label ?? answers[q.id],
-            ]),
-          ),
+          answers: QUESTIONS.filter((q) => answers[q.id]).map((q) => ({
+            question: q.question,
+            answer: q.options.find((o) => o.value === answers[q.id])?.label ?? answers[q.id],
+          })),
         }),
       });
 

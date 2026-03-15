@@ -16,7 +16,7 @@ const leadSchema = z.object({
     ),
   leadMagnet: z.string().min(1),
   resultKey: z.string().optional(),
-  answers: z.record(z.string(), z.string()).optional(),
+  answers: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
 });
 
 // Simple in-memory rate limiter: max 5 requests per IP per 60s
