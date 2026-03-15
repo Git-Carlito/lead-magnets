@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { getSupabase } from "@/lib/supabase";
+import { cn } from "@/lib/utils";
 
 type FatigueType = "physical" | "mental" | "emotional" | "social" | "neutral";
 type Phase = "quiz" | "gate" | "result";
@@ -26,7 +27,6 @@ interface FatigueResult {
   key: string;
   title: string;
   badge: string;
-  color: string;
   signals: string[];
   risksIntro: string;
   risks: string[];
@@ -289,7 +289,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "physical",
     title: "Fatigue Physique Chronique",
     badge: "Ton corps est en dette d'énergie",
-    color: "#E84444",
+
     signals: [
       "Réveil épuisé malgré 7-8h de sommeil : le repos ne régénère plus vraiment",
       "Tensions chroniques dans la nuque, les épaules et le bas du dos",
@@ -328,7 +328,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "mental",
     title: "Fatigue Cognitive Avancée",
     badge: "Ton cerveau tourne à vide",
-    color: "#E84444",
+
     signals: [
       "Impossible de finir une tâche avant d'en commencer une autre : ton esprit saute en permanence",
       "Sentiment de « tête pleine » qui ne lâche pas, même le weekend",
@@ -367,7 +367,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "emotional",
     title: "Épuisement Émotionnel Profond",
     badge: "Tu donnes sans jamais te recharger",
-    color: "#E84444",
+
     signals: [
       "Irritabilité soudaine et disproportionnée : tu t'emportes pour des détails que tu supportais avant",
       "Cynisme grandissant : les projets qui t'enthousiasmaient avant te laissent froid",
@@ -406,7 +406,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "social",
     title: "Isolement du Dirigeant",
     badge: "Tu portes tout, entouré mais seul",
-    color: "#E84444",
+
     signals: [
       "Tu gères tout toi-même car « c'est plus simple que d'expliquer » : même ce qui pourrait être délégué",
       "Tu évites les appels non planifiés : chaque interaction non prévue te coûte de l'énergie",
@@ -445,7 +445,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "mental_physical",
     title: "Double Fatigue : Corps & Cerveau",
     badge: "Corps cassé, tête qui lâche",
-    color: "#E84444",
+
     signals: [
       "Corps épuisé ET tête saturée : aucun répit, ni physiquement ni mentalement",
       "Le sommeil ne récupère pas car le cerveau reste en alerte toute la nuit",
@@ -484,7 +484,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "emotional_physical",
     title: "Fatigue Corps & Âme",
     badge: "Ton énergie vitale est à sec",
-    color: "#E84444",
+
     signals: [
       "Corps épuisé ET réservoir émotionnel vide : tu n'as plus rien à donner à personne",
       "Les petits plaisirs physiques ont disparu : manger avec appétit, bouger par envie",
@@ -523,7 +523,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "physical_social",
     title: "Isolement & Épuisement Physique",
     badge: "Seul avec un corps à bout",
-    color: "#E84444",
+
     signals: [
       "Corps épuisé ET sentiment de solitude profonde : une combinaison particulièrement lourde",
       "Tu évites les sorties car tu n'as plus l'énergie de « jouer le rôle » en société",
@@ -562,7 +562,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "emotional_mental",
     title: "Surcharge Mentale & Vide Émotionnel",
     badge: "Tu penses trop, tu ressens plus",
-    color: "#E84444",
+
     signals: [
       "Tu analyses tout de façon compulsive : même tes émotions deviennent des problèmes à résoudre",
       "Sentiment d'être « déconnecté » de tes propres ressentis : tu sais mais ne ressens plus",
@@ -601,7 +601,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "mental_social",
     title: "Surcharge Cognitive & Solitude",
     badge: "Seul dans ta tête, seul dans ta vie",
-    color: "#E84444",
+
     signals: [
       "Tu fuis les conversations car tu n'as plus de bande passante cognitive pour les autres",
       "Les interactions sociales te coûtent énormément : même avec tes proches",
@@ -640,7 +640,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "all_good",
     title: "Tout va bien apparemment",
     badge: "Sérieusement ?",
-    color: "#E84444",
+
     signals: [],
     risksIntro: "",
     risks: [],
@@ -651,7 +651,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "emotional_social",
     title: "Vide Émotionnel & Solitude Profonde",
     badge: "Tu souffres en silence depuis trop longtemps",
-    color: "#E84444",
+
     signals: [
       "Tu te sens incompris par tous : équipe, famille, amis : même par ceux qui t'aiment vraiment",
       "Les conversations superficielles te pèsent énormément : tu cherches de la profondeur mais n'oses pas",
@@ -690,7 +690,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "emotional_mental_physical",
     title: "Triple Épuisement : Corps, Cerveau & Émotions",
     badge: "Tu es à bout sur tous les fronts sauf un",
-    color: "#E84444",
+
     signals: [
       "Corps épuisé, tête saturée ET réservoir émotionnel à sec : tu fonctionnes encore, mais tu ne sais plus comment",
       "Réveil épuisé, journée à survivre, soirée à tenir : le repos ne répare plus rien",
@@ -729,7 +729,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "mental_physical_social",
     title: "Corps Épuisé, Tête Saturée, Tribu Perdue",
     badge: "Tu fonctionnes encore, mais de plus en plus seul",
-    color: "#E84444",
+
     signals: [
       "Corps épuisé ET cerveau saturé, mais tu ressens encore les choses : tu n'es pas anesthésié",
       "Tu fuis les interactions sociales parce que tu n'as plus la bande passante pour les gérer",
@@ -768,7 +768,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "emotional_physical_social",
     title: "Corps, Moral et Liens à Reconstruire",
     badge: "Tu penses encore, mais ton corps et ton moral sont à zéro",
-    color: "#E84444",
+
     signals: [
       "Corps épuisé, réservoir émotionnel vide ET sentiment de solitude profonde",
       "Tu penses encore clairement, mais tu n'as plus l'énergie de passer à l'action",
@@ -807,7 +807,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "emotional_mental_social",
     title: "Tête Saturée, Moral à Plat, Seul",
     badge: "Physiquement debout, intérieurement à genoux",
-    color: "#E84444",
+
     signals: [
       "Cerveau saturé, réservoir émotionnel vide ET isolement progressif : ton corps est le seul levier intact",
       "Tu penses trop, tu ressens de moins en moins, tu te retrouves seul avec tout ça",
@@ -846,7 +846,7 @@ const RESULTS: Record<string, FatigueResult> = {
     key: "emotional_mental_physical_social",
     title: "Épuisement Total",
     badge: "Plus rien ne tient. Ni le corps, ni la tête, ni le moral, ni les liens",
-    color: "#E84444",
+
     signals: [
       "Corps, cerveau, émotions ET lien social : les quatre sont à plat en même temps",
       "Tu tiens encore par habitude, pas par énergie",
@@ -1015,11 +1015,10 @@ export function ScoreFatigueShell() {
   if (phase === "quiz") {
     return (
       <div
-        className="transition-all duration-300"
-        style={{
-          opacity: inTransition ? 0 : 1,
-          transform: inTransition ? "translateY(8px)" : "translateY(0)",
-        }}
+        className={cn(
+          "transition-all duration-300",
+          inTransition ? "translate-y-2 opacity-0" : "translate-y-0 opacity-100",
+        )}
       >
         <div className="mb-10">
           <div className="mb-2 flex items-center justify-between">
@@ -1028,7 +1027,7 @@ export function ScoreFatigueShell() {
                 <button
                   onClick={handleGoBack}
                   disabled={inTransition}
-                  className="flex cursor-pointer items-center gap-1.5 text-xs font-medium text-gray-500 transition-colors duration-150 hover:text-white disabled:opacity-40"
+                  className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-1.5 text-xs font-medium transition-colors duration-150 disabled:opacity-40"
                 >
                   <svg
                     width="14"
@@ -1050,26 +1049,23 @@ export function ScoreFatigueShell() {
               )}
             </div>
 
-            <span className="text-center text-xs font-medium tracking-widest text-gray-500 uppercase">
+            <span className="text-muted-foreground text-center text-xs font-medium tracking-widest uppercase">
               Question {questionIndex + 1} / {QUESTIONS.length}
             </span>
 
             <div className="flex w-16 flex-shrink-0 justify-end">
-              <span className="text-xs font-bold text-[#E84444]">{Math.round(progressPct)}%</span>
+              <span className="text-primary text-xs font-bold">{Math.round(progressPct)}%</span>
             </div>
           </div>
-          <div className="h-[3px] w-full overflow-hidden rounded-full bg-[#1C1C1C]">
+          <div className="bg-muted h-[3px] w-full overflow-hidden rounded-full">
             <div
-              className="h-full rounded-full transition-all duration-500 ease-out"
-              style={{
-                width: `${progressPct}%`,
-                background: "linear-gradient(90deg, #FF0000, #FF9595)",
-              }}
+              className="from-primary to-primary/40 h-full rounded-full bg-gradient-to-r transition-all duration-500 ease-out"
+              style={{ width: `${progressPct}%` }}
             />
           </div>
         </div>
 
-        <h2 className="mb-8 text-base leading-snug font-bold text-white md:text-2xl">
+        <h2 className="text-foreground mb-8 text-base leading-snug font-bold md:text-2xl">
           {currentQuestion.question}
         </h2>
 
@@ -1081,21 +1077,23 @@ export function ScoreFatigueShell() {
                 key={option.value}
                 onClick={() => handleSelectOption(option.value)}
                 disabled={inTransition}
-                className={`group w-full cursor-pointer rounded-2xl border px-5 py-4 text-left text-sm leading-snug transition-all duration-150 disabled:cursor-not-allowed ${
+                className={cn(
+                  "group w-full cursor-pointer rounded-2xl border px-5 py-4 text-left text-sm leading-snug transition-all duration-150 disabled:cursor-not-allowed",
                   isSelected
-                    ? "border-[#E84444] bg-[#1a0d0d] text-white"
-                    : "border-[#252525] bg-[#111111] text-gray-300 hover:border-[#E84444] hover:bg-[#1a0d0d] hover:text-white"
-                }`}
+                    ? "border-primary bg-primary/10 text-foreground"
+                    : "border-border bg-card text-foreground/80 hover:border-primary hover:bg-primary/10 hover:text-foreground",
+                )}
               >
                 <div className="flex items-center gap-4">
                   <div
-                    className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full transition-colors duration-150 ${
+                    className={cn(
+                      "flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full transition-colors duration-150",
                       isSelected
-                        ? "border-2 border-[#E84444] bg-[#E84444]"
-                        : "border border-[#333] group-hover:border-[#E84444]"
-                    }`}
+                        ? "border-primary bg-primary border-2"
+                        : "border-muted group-hover:border-primary border",
+                    )}
                   >
-                    {isSelected && <div className="h-1.5 w-1.5 rounded-full bg-white" />}
+                    {isSelected && <div className="bg-foreground h-1.5 w-1.5 rounded-full" />}
                   </div>
                   <span>{option.label}</span>
                 </div>
@@ -1111,15 +1109,15 @@ export function ScoreFatigueShell() {
     return (
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="mb-8 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#E84444]/30 bg-[#1a0d0d] px-4 py-2 text-xs font-semibold tracking-wider text-[#E84444]/70 uppercase">
+          <div className="border-primary/30 bg-primary/10 text-primary/70 mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold tracking-wider uppercase">
             <span>✓</span>
             <span>Quiz terminé : Ton analyse est prête</span>
           </div>
 
-          <h2 className="mb-3 text-2xl font-bold text-white md:text-3xl">
+          <h2 className="text-foreground mb-3 text-2xl font-bold md:text-3xl">
             Accède à ton profil de fatigue
           </h2>
-          <p className="mx-auto max-w-sm text-sm leading-relaxed text-gray-400">
+          <p className="text-muted-foreground mx-auto max-w-sm text-sm leading-relaxed">
             Remplis tes informations ci-dessous. Je t'enverrai ton analyse personnalisée et pourrai
             te contacter directement.
           </p>
@@ -1127,8 +1125,8 @@ export function ScoreFatigueShell() {
 
         <form onSubmit={handleSubmitForm} className="mx-auto max-w-sm space-y-4">
           <div>
-            <label className="mb-2 block text-xs font-semibold tracking-wider text-gray-400 uppercase">
-              Prénom <span className="text-[#E84444]">*</span>
+            <label className="text-muted-foreground mb-2 block text-xs font-semibold tracking-wider uppercase">
+              Prénom <span className="text-primary">*</span>
             </label>
             <input
               type="text"
@@ -1136,13 +1134,13 @@ export function ScoreFatigueShell() {
               onChange={(e) => setFirstName(e.target.value)}
               placeholder="Ton prénom"
               autoComplete="given-name"
-              className="w-full rounded-xl border border-[#252525] bg-[#111111] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 focus:border-[#E84444] focus:outline-none"
+              className="border-border bg-card text-foreground placeholder-muted-foreground/70 focus:border-primary w-full rounded-xl border px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-xs font-semibold tracking-wider text-gray-400 uppercase">
-              Nom <span className="text-[#E84444]">*</span>
+            <label className="text-muted-foreground mb-2 block text-xs font-semibold tracking-wider uppercase">
+              Nom <span className="text-primary">*</span>
             </label>
             <input
               type="text"
@@ -1150,13 +1148,13 @@ export function ScoreFatigueShell() {
               onChange={(e) => setLastName(e.target.value)}
               placeholder="Ton nom de famille"
               autoComplete="family-name"
-              className="w-full rounded-xl border border-[#252525] bg-[#111111] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 focus:border-[#E84444] focus:outline-none"
+              className="border-border bg-card text-foreground placeholder-muted-foreground/70 focus:border-primary w-full rounded-xl border px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-xs font-semibold tracking-wider text-gray-400 uppercase">
-              Téléphone <span className="text-[#E84444]">*</span>
+            <label className="text-muted-foreground mb-2 block text-xs font-semibold tracking-wider uppercase">
+              Téléphone <span className="text-primary">*</span>
             </label>
             <input
               type="tel"
@@ -1168,29 +1166,28 @@ export function ScoreFatigueShell() {
               placeholder="+33 6 12 34 56 78"
               autoComplete="tel"
               inputMode="tel"
-              className="w-full rounded-xl border border-[#252525] bg-[#111111] px-4 py-3 text-sm text-white placeholder-gray-600 transition-colors duration-200 focus:border-[#E84444] focus:outline-none"
+              className="border-border bg-card text-foreground placeholder-muted-foreground/70 focus:border-primary w-full rounded-xl border px-4 py-3 text-sm transition-colors duration-200 focus:outline-none"
             />
           </div>
 
           {formError && (
-            <div className="rounded-xl border border-[#E84444]/30 bg-[#1a0d0d] px-4 py-3">
-              <p className="text-xs text-[#E84444]/70">{formError}</p>
+            <div className="border-primary/30 bg-primary/10 rounded-xl border px-4 py-3">
+              <p className="text-primary/70 text-xs">{formError}</p>
             </div>
           )}
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="mt-2 w-full rounded-xl px-6 py-4 text-sm font-bold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50"
-            style={{
-              background: isSubmitting ? "#991111" : "linear-gradient(135deg, #FF0000, #CC0000)",
-              color: "white",
-            }}
+            className={cn(
+              "text-primary-foreground mt-2 w-full rounded-xl px-6 py-4 text-sm font-bold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50",
+              isSubmitting ? "bg-primary/50" : "from-primary to-primary/80 bg-gradient-to-br",
+            )}
           >
             {isSubmitting ? "Chargement de ton analyse…" : "Découvrir mon profil de fatigue →"}
           </button>
 
-          <p className="text-center text-xs leading-relaxed text-gray-600">
+          <p className="text-muted-foreground/70 text-center text-xs leading-relaxed">
             🔒 Tes informations restent confidentielles.
             <br />
             Aucun spam : juste ton analyse et un contact humain.
@@ -1205,25 +1202,25 @@ export function ScoreFatigueShell() {
       <div className="animate-in fade-in slide-in-from-bottom-4 text-center duration-500">
         <div className="mb-6 text-6xl">🤔</div>
 
-        <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
+        <h2 className="text-foreground mb-4 text-2xl font-bold md:text-3xl">
           Qu'est-ce que tu fous là
           <br />
-          <span style={{ color: "#22C55E" }}>si tout va bien ?</span>
+          <span className="text-green-500">si tout va bien ?</span>
         </h2>
 
-        <div className="mx-auto mb-6 max-w-sm rounded-2xl border border-[#252525] bg-[#111111] p-6 text-left">
-          <p className="mb-4 text-sm leading-relaxed text-gray-300">
+        <div className="border-border bg-card mx-auto mb-6 max-w-sm rounded-2xl border p-6 text-left">
+          <p className="text-foreground/80 mb-4 text-sm leading-relaxed">
             Soit tu es vraiment en pleine forme : auquel cas bravo, tu fais partie des{" "}
-            <strong className="text-white">3% de dirigeants</strong> dans ce cas.
+            <strong className="text-foreground">3% de dirigeants</strong> dans ce cas.
           </p>
-          <p className="mb-4 text-sm leading-relaxed text-gray-300">
+          <p className="text-foreground/80 mb-4 text-sm leading-relaxed">
             Soit tu es passé un peu vite sur les réponses.{" "}
-            <span className="text-gray-500">On ne juge pas.</span>
+            <span className="text-muted-foreground">On ne juge pas.</span>
           </p>
-          <p className="text-sm leading-relaxed text-gray-300">
+          <p className="text-foreground/80 text-sm leading-relaxed">
             Dans tous les cas, un échange avec moi ne peut pas faire de mal. La prévention, c'est
             aussi pour les gens qui vont bien : et les dirigeants qui anticipent sont ceux qui{" "}
-            <strong className="text-white">ne tombent jamais vraiment</strong>.
+            <strong className="text-foreground">ne tombent jamais vraiment</strong>.
           </p>
         </div>
 
@@ -1231,8 +1228,7 @@ export function ScoreFatigueShell() {
           href="https://wa.me/971585909220?text=Bonjour%20Charles%2C%20je%20viens%20de%20faire%20ton%20test%20de%20fatigue.%20J%27aimerais%20en%20parler%20avec%20toi."
           target="_blank"
           rel="noopener noreferrer"
-          className="mb-3 inline-flex w-full items-center justify-center gap-3 rounded-xl px-8 py-4 text-sm font-bold text-white transition-all duration-200 hover:opacity-90"
-          style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
+          className="text-foreground mb-3 inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[linear-gradient(135deg,#25D366,#128C7E)] px-8 py-4 text-sm font-bold transition-all duration-200 hover:opacity-90"
         >
           <svg
             width="18"
@@ -1245,7 +1241,9 @@ export function ScoreFatigueShell() {
           </svg>
           Parler à Charles sur WhatsApp
         </a>
-        <p className="text-xs text-gray-600">Réponse rapide · Gratuit · Sans engagement</p>
+        <p className="text-muted-foreground/70 text-xs">
+          Réponse rapide · Gratuit · Sans engagement
+        </p>
       </div>
     );
   }
@@ -1254,78 +1252,59 @@ export function ScoreFatigueShell() {
     return (
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="mb-8 text-center">
-          <div
-            className="mb-5 inline-block rounded-full px-5 py-2 text-xs font-bold tracking-wider uppercase"
-            style={{
-              backgroundColor: `${result.color}20`,
-              color: result.color,
-              border: `1px solid ${result.color}40`,
-            }}
-          >
+          <div className="border-primary/25 bg-primary/[0.125] text-primary mb-5 inline-block rounded-full border px-5 py-2 text-xs font-bold tracking-wider uppercase">
             {result.badge}
           </div>
-          <h2 className="mb-1 text-3xl font-bold text-white md:text-4xl">
-            Ton profil : <span style={{ color: result.color }}>{result.title}</span>
+          <h2 className="text-foreground mb-1 text-3xl font-bold md:text-4xl">
+            Ton profil : <span className="text-primary">{result.title}</span>
           </h2>
         </div>
 
-        <div className="mb-4 rounded-2xl border border-[#252525] bg-[#111111] p-6">
-          <h3 className="mb-4 flex items-center gap-2 text-base font-bold text-white">
-            <span style={{ color: result.color }}>🔍</span>
+        <div className="border-border bg-card mb-4 rounded-2xl border p-6">
+          <h3 className="text-foreground mb-4 flex items-center gap-2 text-base font-bold">
+            <span className="text-primary">🔍</span>
             Les signaux qui ne trompent pas
           </h3>
           <ul className="space-y-3">
             {result.signals.map((signal, i) => (
               <li key={i} className="flex items-start gap-3">
-                <span className="mt-0.5 flex-shrink-0 font-bold" style={{ color: result.color }}>
-                  ▸
-                </span>
-                <span className="text-sm leading-snug text-gray-300">{signal}</span>
+                <span className="text-primary mt-0.5 flex-shrink-0 font-bold">▸</span>
+                <span className="text-foreground/80 text-sm leading-snug">{signal}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div
-          className="mb-4 rounded-2xl p-6"
-          style={{
-            backgroundColor: `${result.color}10`,
-            border: `1px solid ${result.color}25`,
-          }}
-        >
-          <h3 className="mb-3 flex items-center gap-2 text-base font-bold text-white">
+        <div className="border-primary/15 bg-primary/[0.06] mb-4 rounded-2xl border p-6">
+          <h3 className="text-foreground mb-3 flex items-center gap-2 text-base font-bold">
             <span>⚠️</span> Pourquoi il est impératif de changer
           </h3>
-          <p className="mb-4 text-sm leading-relaxed text-gray-400">{result.risksIntro}</p>
+          <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{result.risksIntro}</p>
           <ul className="space-y-2">
             {result.risks.map((risk, i) => (
               <li key={i} className="flex items-start gap-3">
                 <span className="mt-0.5 flex-shrink-0 font-bold text-orange-400">→</span>
-                <span className="text-sm leading-snug text-gray-300">{risk}</span>
+                <span className="text-foreground/80 text-sm leading-snug">{risk}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="mb-8 rounded-2xl border border-[#252525] bg-[#111111] p-6">
-          <h3 className="mb-5 flex items-center gap-2 text-base font-bold text-white">
+        <div className="border-border bg-card mb-8 rounded-2xl border p-6">
+          <h3 className="text-foreground mb-5 flex items-center gap-2 text-base font-bold">
             <span>🏆</span> Mon conseil de champion : Plan d'action en 3 étapes
           </h3>
           <div className="space-y-5">
             {result.actions.map((action, i) => (
               <div key={i} className="flex gap-4">
-                <div
-                  className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold"
-                  style={{
-                    backgroundColor: `${result.color}25`,
-                    color: result.color,
-                  }}
-                >
+                <div className="bg-primary/[0.15] text-primary mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold">
                   {i + 1}
                 </div>
                 <div>
-                  <p className="mb-1 text-sm font-semibold text-white">{action.title}</p>
-                  <p className="text-sm leading-relaxed text-gray-400">{action.description}</p>
+                  <p className="text-foreground mb-1 text-sm font-semibold">{action.title}</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {action.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -1337,8 +1316,7 @@ export function ScoreFatigueShell() {
             href="https://wa.me/971585909220?text=Bonjour%20Charles%2C%20je%20viens%20de%20faire%20ton%20test%20de%20fatigue.%20J%27aimerais%20en%20parler%20avec%20toi."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-3 rounded-xl px-8 py-4 text-sm font-bold text-white transition-all duration-200 hover:opacity-90"
-            style={{ background: "linear-gradient(135deg, #25D366, #128C7E)" }}
+            className="text-foreground inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[linear-gradient(135deg,#25D366,#128C7E)] px-8 py-4 text-sm font-bold transition-all duration-200 hover:opacity-90"
           >
             <svg
               width="18"
@@ -1351,7 +1329,9 @@ export function ScoreFatigueShell() {
             </svg>
             Parler à Charles sur WhatsApp
           </a>
-          <p className="mt-3 text-xs text-gray-600">Réponse rapide · Gratuit · Sans engagement</p>
+          <p className="text-muted-foreground/70 mt-3 text-xs">
+            Réponse rapide · Gratuit · Sans engagement
+          </p>
         </div>
       </div>
     );

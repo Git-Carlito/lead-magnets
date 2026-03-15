@@ -4,7 +4,7 @@ import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell"
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,75 +26,48 @@ import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell"
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet" />
-
-    <style>
-      .header-logo-link {
-        margin-left: 5cm;
-        display: inline-block;
-      }
-      .header-logo-img {
-        height: 13px;
-        width: auto;
-        display: block;
-      }
-      @media (max-width: 640px) {
-        .header-logo-link {
-          margin-left: 0;
-        }
-        .header-logo-img {
-          height: 11px;
-        }
-        .hero-title {
-          font-size: 2rem !important;
-          line-height: 1.05 !important;
-        }
-        .hero-subtitle {
-          font-size: 0.91rem !important;
-        }
-      }
-    </style>
   </head>
 
-  <body class="min-h-screen" style="background-color: #111214; color: white; font-family: 'Geist Variable', sans-serif; position: relative; overflow-x: hidden;">
+  <body class="min-h-screen relative overflow-x-hidden">
 
-    <header style="border-bottom: 1px solid #1A1A1A; padding: 16px 24px;">
-      <a href="https://charlesdenis.fr/" target="_blank" rel="noopener noreferrer" class="header-logo-link">
+    <header class="border-b border-border px-6 py-4">
+      <a href="https://charlesdenis.fr/" target="_blank" rel="noopener noreferrer" class="inline-block sm:ml-0 md:ml-48">
         <img
           src="/logo.png"
           alt="PERFORMEUR — Charles Denis"
-          class="header-logo-img"
+          class="block w-auto h-[11px] sm:h-[13px]"
         />
       </a>
     </header>
 
-    <div style="position: absolute; top: 57px; left: 0; right: 0; height: 700px; background: radial-gradient(ellipse 100% 600px at 50% 0%, rgba(232,68,68,0.14) 0%, rgba(232,68,68,0.07) 35%, rgba(232,68,68,0.02) 60%, transparent 75%); pointer-events: none; z-index: 0;"></div>
+    <div class="hero-glow absolute top-[57px] inset-x-0 h-[700px] pointer-events-none z-0"></div>
 
-    <div style="max-width: 640px; margin: 0 auto; padding: 48px 24px 16px; text-align: center;">
-      <div style="display: inline-flex; align-items: center; gap: 8px; background: #000000; border: 1px solid rgba(255,255,255,0.5); color: #ffffff; padding: 8px 16px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;">
+    <div class="mx-auto max-w-[640px] px-6 pt-12 pb-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-black border border-foreground/50 text-foreground px-4 py-2 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5">
         <span>Diagnostic gratuit · 2 minutes</span>
       </div>
 
-      <h1 class="hero-title" style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.6rem, 6.5vw, 3.575rem); line-height: 1.0; margin-bottom: 28px;">
-        Tu n'arrives pas à<br /><span style="color: #E84444;">récupérer ?</span>
+      <h1 class="font-[Inter] font-black text-[2rem] leading-tight sm:text-[clamp(2.6rem,6.5vw,3.575rem)] sm:leading-none mb-7">
+        Tu n'arrives pas à<br /><span class="text-primary">récupérer ?</span>
       </h1>
 
-      <p class="hero-subtitle" style="color: #9CA3AF; font-size: 1.26rem; max-width: 620px; margin: 0 auto 8px; line-height: 1.4;">
-        Réponds à ces 8 questions, découvre quel <strong style="color: white;">type de fatigue</strong> te touche et récupère ton <strong style="color: white;">plan d'action</strong> pour retrouver la forme.
+      <p class="text-muted-foreground text-[0.91rem] sm:text-[1.26rem] max-w-[620px] mx-auto mb-2 leading-relaxed">
+        Réponds à ces 8 questions, découvre quel <strong class="text-foreground">type de fatigue</strong> te touche et récupère ton <strong class="text-foreground">plan d'action</strong> pour retrouver la forme.
       </p>
     </div>
 
-    <main style="max-width: 640px; margin: 0 auto; padding: 24px 24px 64px;">
+    <main class="mx-auto max-w-[640px] px-6 pb-16 pt-6">
       <ScoreFatigueShell client:load />
     </main>
 
-    <footer style="text-align: center; padding: 32px 24px; border-top: 1px solid #1A1A1A;">
-      <p style="color: #374151; font-size: 12px;">
+    <footer class="text-center px-6 py-8 border-t border-border">
+      <p class="text-muted-foreground text-xs">
         © 2026 Charles Denis — Coach pour dirigeants ·{" "}
         <a
           href="https://charlesdenis.fr/"
           target="_blank"
           rel="noopener noreferrer"
-          style="color: #4B5563; text-decoration: none;"
+          class="text-muted-foreground hover:text-foreground no-underline"
         >
           charlesdenis.fr
         </a>
