@@ -49,7 +49,7 @@ export function GatePhase({
           firstName: value.firstName,
           lastName: value.lastName,
           phone: value.phone,
-          leadMagnet: "score-fatigue",
+          leadMagnet: "sleep-score",
           resultKey: result?.key,
         }),
       });
