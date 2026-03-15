@@ -1,6 +1,7 @@
 import type { APIContext } from "astro";
 import { z } from "zod";
 
+import { sendEmail } from "@/helpers/email.helpers";
 import { getSupabase } from "@/lib/supabase";
 
 const leadSchema = z.object({
@@ -34,6 +35,37 @@ function isRateLimited(ip: string): boolean {
   timestamps.push(now);
   hits.set(ip, timestamps);
   return false;
+}
+
+function sendLeadNotification(lead: {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  leadMagnet: string;
+  resultKey?: string;
+  answers?: { question: string; answer: string }[];
+}) {
+  const to = import.meta.env.NOTIFICATION_EMAIL;
+  if (!to) return;
+
+  const answersBlock = lead.answers?.length
+    ? lead.answers.map((a) => `<p><strong>${a.question}</strong><br/>${a.answer}</p>`).join("")
+    : "<p><em>Aucune réponse</em></p>";
+
+  sendEmail({
+    from: "Notifications <onboarding@resend.dev>",
+    to,
+    subject: `Nouveau lead : ${lead.firstName} ${lead.lastName}`,
+    html: `
+      <h2>Nouveau lead capturé</h2>
+      <p><strong>Nom :</strong> ${lead.firstName} ${lead.lastName}</p>
+      <p><strong>Téléphone :</strong> ${lead.phone}</p>
+      <p><strong>Lead magnet :</strong> ${lead.leadMagnet}</p>
+      <p><strong>Profil résultat :</strong> ${lead.resultKey ?? "—"}</p>
+      <h3>Réponses</h3>
+      ${answersBlock}
+    `,
+  });
 }
 
 export async function POST({ request, clientAddress }: APIContext) {
@@ -82,6 +114,8 @@ export async function POST({ request, clientAddress }: APIContext) {
       headers: { "Content-Type": "application/json" },
     });
   }
+
+  sendLeadNotification({ firstName, lastName, phone, leadMagnet, resultKey, answers });
 
   return new Response(JSON.stringify({ ok: true }), {
     status: 201,
