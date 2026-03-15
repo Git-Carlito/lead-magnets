@@ -1,0 +1,17 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<header class:list={["px-6 py-5", className]}>
+  <a href="https://charlesdenis.fr/" target="_blank" rel="noopener noreferrer" class="inline-block sm:ml-0 md:ml-48">
+    <img
+      src="/logo.png"
+      alt="PERFORMEUR — Charles Denis"
+      class="block w-auto h-[11px] sm:h-[13px]"
+    />
+  </a>
+</header>
