@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { cn } from "@/lib/utils";
 
+import { QUESTIONS } from "./questions";
 import type { FatigueResult } from "./types";
 
 const INPUT_CLASS =
@@ -53,7 +54,12 @@ export function GatePhase({
           phone: value.phone,
           leadMagnet: "sleep-score",
           resultKey: result?.key,
-          answers,
+          answers: Object.fromEntries(
+            QUESTIONS.filter((q) => answers[q.id]).map((q) => [
+              q.question,
+              q.options.find((o) => o.value === answers[q.id])?.label ?? answers[q.id],
+            ]),
+          ),
         }),
       });
 
