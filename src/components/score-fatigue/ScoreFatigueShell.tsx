@@ -54,22 +54,22 @@ const QUESTIONS: FatigueQuestion[] = [
       "Quand tu te réveilles le matin, comment tu te sens le plus souvent ?",
     options: [
       {
-        label: "Physiquement épuisé : comme si je n'avais pas dormi",
+        label: "Je suis épuisé avant même de commencer",
         value: "q1_p",
         type: "physique",
       },
       {
-        label: "La tête lourde : du mal à démarrer mentalement",
+        label: "Je suis dans le brouillard",
         value: "q1_m",
         type: "mentale",
       },
       {
-        label: "Vidé intérieurement : sans envie ni élan",
+        label: "Je n'ai aucune envie de me lever",
         value: "q1_e",
         type: "emotionnelle",
       },
       {
-        label: "J'appréhende déjà les interactions de la journée",
+        label: "J'appréhende déjà les gens de la journée",
         value: "q1_s",
         type: "sociale",
       },
@@ -86,23 +86,22 @@ const QUESTIONS: FatigueQuestion[] = [
       "Dans ta vie de dirigeant, qu'est-ce qui te vide le plus d'énergie ?",
     options: [
       {
-        label: "Toujours en mouvement : mon corps ne suit plus vraiment",
+        label: "Mon corps ne tient plus le rythme",
         value: "q2_p",
         type: "physique",
       },
       {
-        label:
-          "La surcharge de décisions : trop de choses à gérer simultanément",
+        label: "J'ai trop de choses à gérer en même temps",
         value: "q2_m",
         type: "mentale",
       },
       {
-        label: "Porter les émotions de mon équipe et de ma famille",
+        label: "Je porte tout le monde sur mes épaules",
         value: "q2_e",
         type: "emotionnelle",
       },
       {
-        label: "L'isolement du dirigeant : personne ne comprend vraiment",
+        label: "Je me sens seul dans mon rôle",
         value: "q2_s",
         type: "sociale",
       },
@@ -118,22 +117,22 @@ const QUESTIONS: FatigueQuestion[] = [
     question: "Le soir, qu'est-ce qui t'empêche le plus de décompresser ?",
     options: [
       {
-        label: "Mon corps ne se détend pas : tensions et douleurs persistantes",
+        label: "Mon corps reste tendu, je n'arrive pas à lâcher",
         value: "q3_p",
         type: "physique",
       },
       {
-        label: "Les pensées tournent en boucle : impossible de m'arrêter",
+        label: "Ma tête tourne en boucle",
         value: "q3_m",
         type: "mentale",
       },
       {
-        label: "Un sentiment de vide ou de tristesse qui s'installe",
+        label: "Je ressens un vide ou une tristesse",
         value: "q3_e",
         type: "emotionnelle",
       },
       {
-        label: "La pression de devoir encore gérer les autres",
+        label: "Je dois encore gérer les autres",
         value: "q3_s",
         type: "sociale",
       },
@@ -149,22 +148,22 @@ const QUESTIONS: FatigueQuestion[] = [
     question: "Quel est l'impact de ta fatigue sur tes proches ?",
     options: [
       {
-        label: "Je suis absent physiquement : toujours quelque chose à faire",
+        label: "Je suis toujours absent, jamais vraiment là",
         value: "q4_p",
         type: "physique",
       },
       {
-        label: "Je suis là mais ma tête est complètement ailleurs",
+        label: "Je suis là sans vraiment être là",
         value: "q4_m",
         type: "mentale",
       },
       {
-        label: "Je suis irritable ou je me ferme sans raison claire",
+        label: "Je suis irritable ou je me referme",
         value: "q4_e",
         type: "emotionnelle",
       },
       {
-        label: "Je me sens profondément seul même entouré de ma famille",
+        label: "Je me sens seul même avec eux",
         value: "q4_s",
         type: "sociale",
       },
@@ -180,22 +179,22 @@ const QUESTIONS: FatigueQuestion[] = [
     question: "Ce qui te ressourcerait vraiment, c'est…",
     options: [
       {
-        label: "Dormir profondément et que mon corps récupère enfin",
+        label: "Dormir vraiment et récupérer",
         value: "q5_p",
         type: "physique",
       },
       {
-        label: "Me vider la tête : sans écran ni décision à prendre",
+        label: "Me vider la tête, zéro décision",
         value: "q5_m",
         type: "mentale",
       },
       {
-        label: "Parler à quelqu'un qui comprend vraiment ce que je vis",
+        label: "Parler à quelqu'un qui comprend vraiment",
         value: "q5_e",
         type: "emotionnelle",
       },
       {
-        label: "Retrouver une vraie connexion avec moi-même et mes proches",
+        label: "Me reconnecter à moi et à mes proches",
         value: "q5_s",
         type: "sociale",
       },
@@ -211,22 +210,22 @@ const QUESTIONS: FatigueQuestion[] = [
     question: "Parmi ces symptômes, lequel te correspond le plus ?",
     options: [
       {
-        label: "Douleurs chroniques, tensions, corps qui crie stop",
+        label: "Mon corps crie stop",
         value: "q6_p",
         type: "physique",
       },
       {
-        label: "Concentration en baisse, oublis, décisions difficiles",
+        label: "Je n'arrive plus à me concentrer",
         value: "q6_m",
         type: "mentale",
       },
       {
-        label: "Irritabilité, tristesse, difficulté à ressentir de la joie",
+        label: "Je suis irritable et je ne ressens plus grand chose",
         value: "q6_e",
         type: "emotionnelle",
       },
       {
-        label: "Sentiment d'incompréhension et de solitude profonde",
+        label: "Je me sens incompris et profondément seul",
         value: "q6_s",
         type: "sociale",
       },
@@ -242,22 +241,22 @@ const QUESTIONS: FatigueQuestion[] = [
     question: "Si tu pouvais changer une chose demain, ce serait…",
     options: [
       {
-        label: "Retrouver de l'énergie physique et un corps qui récupère",
+        label: "Retrouver de l'énergie et un corps qui récupère",
         value: "q7_p",
         type: "physique",
       },
       {
-        label: "Avoir la tête claire et prendre des décisions avec fluidité",
+        label: "Avoir la tête claire",
         value: "q7_m",
         type: "mentale",
       },
       {
-        label: "Retrouver ma joie de vivre et mon enthousiasme",
+        label: "Retrouver ma joie de vivre",
         value: "q7_e",
         type: "emotionnelle",
       },
       {
-        label: "Me sentir vraiment compris et soutenu",
+        label: "Me sentir compris et soutenu",
         value: "q7_s",
         type: "sociale",
       },
@@ -273,22 +272,22 @@ const QUESTIONS: FatigueQuestion[] = [
     question: "Ta plus grande peur si tu ne changes rien…",
     options: [
       {
-        label: "M'effondrer physiquement ou tomber sérieusement malade",
+        label: "M'effondrer ou tomber vraiment malade",
         value: "q8_p",
         type: "physique",
       },
       {
-        label: "Perdre en performance, en créativité et en leadership",
+        label: "Perdre mes capacités et mon leadership",
         value: "q8_m",
         type: "mentale",
       },
       {
-        label: "M'éloigner de qui je suis vraiment et de ceux que j'aime",
+        label: "M'éloigner de ceux que j'aime",
         value: "q8_e",
         type: "emotionnelle",
       },
       {
-        label: "Me retrouver encore plus seul et incompris",
+        label: "Finir encore plus seul",
         value: "q8_s",
         type: "sociale",
       },
