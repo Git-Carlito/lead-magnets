@@ -33,9 +33,11 @@ function FormLabel({ label }: { label: string }) {
 
 export function GatePhase({
   result,
+  answers,
   onSubmitted,
 }: {
   result: FatigueResult | null;
+  answers: Record<string, string>;
   onSubmitted: () => void;
 }) {
   const form = useForm({
@@ -51,6 +53,7 @@ export function GatePhase({
           phone: value.phone,
           leadMagnet: "sleep-score",
           resultKey: result?.key,
+          answers,
         }),
       });
 
