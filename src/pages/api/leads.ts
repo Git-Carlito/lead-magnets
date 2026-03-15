@@ -16,6 +16,7 @@ const leadSchema = z.object({
     ),
   leadMagnet: z.string().min(1),
   resultKey: z.string().optional(),
+  answers: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
 });
 
 // Simple in-memory rate limiter: max 5 requests per IP per 60s
@@ -61,7 +62,7 @@ export async function POST({ request, clientAddress }: APIContext) {
     );
   }
 
-  const { firstName, lastName, phone, leadMagnet, resultKey } = parsed.data;
+  const { firstName, lastName, phone, leadMagnet, resultKey, answers } = parsed.data;
 
   const { error } = await getSupabase()
     .from("leads")
@@ -70,7 +71,7 @@ export async function POST({ request, clientAddress }: APIContext) {
       last_name: lastName,
       phone,
       lead_magnet: leadMagnet,
-      answers: resultKey ? { result_key: resultKey } : {},
+      answers: answers ?? {},
       result: resultKey,
     });
 

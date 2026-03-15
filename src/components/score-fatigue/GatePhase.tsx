@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { cn } from "@/lib/utils";
 
+import { QUESTIONS } from "./questions";
 import type { FatigueResult } from "./types";
 
 const INPUT_CLASS =
@@ -33,9 +34,11 @@ function FormLabel({ label }: { label: string }) {
 
 export function GatePhase({
   result,
+  answers,
   onSubmitted,
 }: {
   result: FatigueResult | null;
+  answers: Record<string, string>;
   onSubmitted: () => void;
 }) {
   const form = useForm({
@@ -51,6 +54,10 @@ export function GatePhase({
           phone: value.phone,
           leadMagnet: "sleep-score",
           resultKey: result?.key,
+          answers: QUESTIONS.filter((q) => answers[q.id]).map((q) => ({
+            question: q.question,
+            answer: q.options.find((o) => o.value === answers[q.id])?.label ?? answers[q.id],
+          })),
         }),
       });
 

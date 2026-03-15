@@ -54,7 +54,7 @@ export function ScoreFatigueShell() {
   }
 
   if (phase === "gate") {
-    return <GatePhase result={result} onSubmitted={() => setPhase("result")} />;
+    return <GatePhase result={result} answers={answers} onSubmitted={() => setPhase("result")} />;
   }
 
   if (phase === "result" && result?.key === "all_good") {
