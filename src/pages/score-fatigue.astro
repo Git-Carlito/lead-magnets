@@ -1,0 +1,61 @@
+---
+export const prerender = true;
+import "@/styles/globals.css";
+import AppHeader from "@/components/AppHeader.astro";
+import AppFooter from "@/components/AppFooter.astro";
+import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell";
+---
+
+<!doctype html>
+<html lang="fr" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Découvre ton profil de fatigue en 8 questions — analyse personnalisée pour dirigeants."
+    />
+    <meta property="og:title" content="Score de Fatigue — Charles Denis" />
+    <meta
+      property="og:description"
+      content="8 questions pour identifier ton type de fatigue dominant et comprendre pourquoi tu n'avances plus."
+    />
+    <title>Score de Fatigue — Charles Denis</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="min-h-screen relative overflow-x-hidden">
+
+    <AppHeader />
+
+    <div class="hero-glow absolute top-[57px] inset-x-0 h-[700px] pointer-events-none z-0"></div>
+
+    <div class="mx-auto max-w-[640px] px-6 pt-12 pb-4 text-center">
+      <div class="inline-flex items-center gap-2 bg-black border border-foreground/50 text-foreground px-4 py-2 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5">
+        <span>Diagnostic gratuit · 2 minutes</span>
+      </div>
+
+      <h1 class="font-[Inter] font-black text-[2rem] leading-tight sm:text-[clamp(2.6rem,6.5vw,3.575rem)] sm:leading-none mb-7">
+        Tu n'arrives pas à<br /><span class="text-primary">récupérer ?</span>
+      </h1>
+
+      <p class="text-muted-foreground text-[0.91rem] sm:text-[1.26rem] max-w-[620px] mx-auto mb-2 leading-relaxed">
+        Réponds à ces 8 questions, découvre quel <strong class="text-foreground">type de fatigue</strong> te touche et récupère ton <strong class="text-foreground">plan d'action</strong> pour retrouver la forme.
+      </p>
+    </div>
+
+    <main class="mx-auto max-w-[640px] px-6 py-6">
+      <ScoreFatigueShell client:load />
+    </main>
+
+    <AppFooter />
+
+  </body>
+</html>

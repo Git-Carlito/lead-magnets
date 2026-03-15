@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<footer class:list={["text-center px-6 py-8", className]}>
+  <p class="text-muted-foreground text-xs">
+    © 2026 Charles Denis — Coach pour dirigeants ·
+    <a
+      href="https://charlesdenis.fr/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-muted-foreground hover:text-foreground no-underline"
+    >
+      charlesdenis.fr
+    </a>
+  </p>
+</footer>
