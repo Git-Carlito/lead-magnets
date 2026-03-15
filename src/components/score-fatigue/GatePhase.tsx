@@ -1,7 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { z } from "zod";
 
-import { getSupabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 
 import type { FatigueResult } from "./types";
@@ -43,22 +42,23 @@ export function GatePhase({
     defaultValues: { firstName: "", lastName: "", phone: "" },
     validators: { onSubmit: gateSchema },
     async onSubmit({ value }) {
-      try {
-        await getSupabase()
-          .from("leads")
-          .insert({
-            first_name: value.firstName,
-            last_name: value.lastName,
-            phone: value.phone,
-            lead_magnet: "score-fatigue",
-            answers: result ? { result_key: result.key } : {},
-            result: result?.key,
-          });
-      } catch (error) {
-        console.warn("Supabase not configured, continuing without saving:", error);
-      } finally {
-        onSubmitted();
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: value.firstName,
+          lastName: value.lastName,
+          phone: value.phone,
+          leadMagnet: "score-fatigue",
+          resultKey: result?.key,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Une erreur est survenue, merci de réessayer.");
       }
+
+      onSubmitted();
     },
   });
 
@@ -149,6 +149,16 @@ export function GatePhase({
             </div>
           )}
         </form.Field>
+
+        <form.Subscribe selector={(s) => s.errorMap.onSubmit}>
+          {(error) =>
+            error && (
+              <div className="border-primary/30 bg-primary/10 rounded-xl border px-4 py-3">
+                <p className="text-primary/70 text-xs">{String(error)}</p>
+              </div>
+            )
+          }
+        </form.Subscribe>
 
         <form.Subscribe selector={(s) => s.isSubmitting}>
           {(isSubmitting) => (

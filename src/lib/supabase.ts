@@ -4,9 +4,9 @@ let _supabase: SupabaseClient | null = null;
 
 export function getSupabase(): SupabaseClient {
   if (!_supabase) {
-    const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-    _supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const url = import.meta.env.SUPABASE_URL;
+    const key = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
+    _supabase = createClient(url, key);
   }
   return _supabase;
 }
