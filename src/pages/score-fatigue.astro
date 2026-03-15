@@ -1,5 +1,7 @@
 ---
 import "@/styles/globals.css";
+import AppHeader from "@/components/AppHeader.astro";
+import AppFooter from "@/components/AppFooter.astro";
 import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell";
 ---
 
@@ -30,15 +32,7 @@ import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell"
 
   <body class="min-h-screen relative overflow-x-hidden">
 
-    <header class="border-b border-border px-6 py-4">
-      <a href="https://charlesdenis.fr/" target="_blank" rel="noopener noreferrer" class="inline-block sm:ml-0 md:ml-48">
-        <img
-          src="/logo.png"
-          alt="PERFORMEUR — Charles Denis"
-          class="block w-auto h-[11px] sm:h-[13px]"
-        />
-      </a>
-    </header>
+    <AppHeader />
 
     <div class="hero-glow absolute top-[57px] inset-x-0 h-[700px] pointer-events-none z-0"></div>
 
@@ -56,23 +50,11 @@ import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell"
       </p>
     </div>
 
-    <main class="mx-auto max-w-[640px] px-6 pb-16 pt-6">
+    <main class="mx-auto max-w-[640px] px-6 py-6">
       <ScoreFatigueShell client:load />
     </main>
 
-    <footer class="text-center px-6 py-8 border-t border-border">
-      <p class="text-muted-foreground text-xs">
-        © 2026 Charles Denis — Coach pour dirigeants ·{" "}
-        <a
-          href="https://charlesdenis.fr/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-muted-foreground hover:text-foreground no-underline"
-        >
-          charlesdenis.fr
-        </a>
-      </p>
-    </footer>
+    <AppFooter />
 
   </body>
 </html>

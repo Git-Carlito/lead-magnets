@@ -1,0 +1,54 @@
+---
+import "@/styles/globals.css";
+import AppHeader from "@/components/AppHeader.astro";
+import AppFooter from "@/components/AppFooter.astro";
+---
+
+<!doctype html>
+<html lang="fr" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Page introuvable — Charles Denis, coach pour dirigeants." />
+    <title>Page introuvable — Charles Denis</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="flex min-h-screen flex-col justify-between relative overflow-x-hidden">
+
+    <AppHeader />
+
+    <div class="hero-glow absolute top-[57px] inset-x-0 h-[700px] pointer-events-none z-0"></div>
+
+    <main class="flex flex-1 items-center justify-center px-6 text-center relative z-10">
+      <div>
+        <p class="text-primary text-8xl font-black mb-6">404</p>
+
+        <h1 class="font-[Inter] font-black text-2xl sm:text-3xl leading-tight mb-4">
+          Cette page n'existe pas.
+        </h1>
+
+        <p class="text-muted-foreground text-sm sm:text-base max-w-[440px] mx-auto mb-10 leading-relaxed">
+          Pas de panique — profite de ce détour pour découvrir ton profil de fatigue en 2 minutes.
+        </p>
+
+        <a
+          href="/score-fatigue"
+          class="inline-block from-primary to-primary/80 bg-gradient-to-br text-primary-foreground rounded-xl px-8 py-4 text-sm font-bold transition-all duration-200 hover:opacity-90"
+        >
+          Faire le diagnostic fatigue →
+        </a>
+      </div>
+    </main>
+
+    <AppFooter />
+
+  </body>
+</html>
