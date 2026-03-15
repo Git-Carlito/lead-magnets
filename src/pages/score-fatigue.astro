@@ -1,9 +1,4 @@
 ---
-// src/pages/score-fatigue.astro
-// Page du questionnaire "Score de Fatigue"
-// Design sombre inspiré de callscore.charbonnerie.com
-// Client cible : dirigeants 30-55 ans, en mal-être
-
 import "@/styles/globals.css";
 import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell";
 ---
@@ -24,15 +19,14 @@ import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell"
     />
     <title>Score de Fatigue — Charles Denis</title>
 
-    <!-- Logo comme favicon -->
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Police Inter ExtraBold via Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet" />
 
-    <!-- Responsive logo header -->
     <style>
       .header-logo-link {
         margin-left: 5cm;
@@ -50,12 +44,10 @@ import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell"
         .header-logo-img {
           height: 11px;
         }
-        /* Titre : 2 lignes sur mobile */
         .hero-title {
           font-size: 2rem !important;
           line-height: 1.05 !important;
         }
-        /* Sous-titre : -30% sur mobile */
         .hero-subtitle {
           font-size: 0.91rem !important;
         }
@@ -65,7 +57,6 @@ import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell"
 
   <body class="min-h-screen" style="background-color: #111214; color: white; font-family: 'Geist Variable', sans-serif; position: relative; overflow-x: hidden;">
 
-    <!-- ── Header ─────────────────────────────────────────── -->
     <header style="border-bottom: 1px solid #1A1A1A; padding: 16px 24px;">
       <a href="https://charlesdenis.fr/" target="_blank" rel="noopener noreferrer" class="header-logo-link">
         <img
@@ -76,33 +67,26 @@ import { ScoreFatigueShell } from "@/components/score-fatigue/ScoreFatigueShell"
       </a>
     </header>
 
-    <!-- ── Halo depuis le trait bas du header (header = 49px) ── -->
     <div style="position: absolute; top: 57px; left: 0; right: 0; height: 700px; background: radial-gradient(ellipse 100% 600px at 50% 0%, rgba(232,68,68,0.14) 0%, rgba(232,68,68,0.07) 35%, rgba(232,68,68,0.02) 60%, transparent 75%); pointer-events: none; z-index: 0;"></div>
 
-    <!-- ── Intro ──────────────────────────────────────────── -->
     <div style="max-width: 640px; margin: 0 auto; padding: 48px 24px 16px; text-align: center;">
-      <!-- Badge -->
       <div style="display: inline-flex; align-items: center; gap: 8px; background: #000000; border: 1px solid rgba(255,255,255,0.5); color: #ffffff; padding: 8px 16px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;">
         <span>Diagnostic gratuit · 2 minutes</span>
       </div>
 
-      <!-- Titre principal — Inter Black, serré -->
       <h1 class="hero-title" style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.6rem, 6.5vw, 3.575rem); line-height: 1.0; margin-bottom: 28px;">
         Tu n'arrives pas à<br /><span style="color: #E84444;">récupérer ?</span>
       </h1>
 
-      <!-- Sous-titre — taille +30% -->
       <p class="hero-subtitle" style="color: #9CA3AF; font-size: 1.26rem; max-width: 620px; margin: 0 auto 8px; line-height: 1.4;">
         Réponds à ces 8 questions, découvre quel <strong style="color: white;">type de fatigue</strong> te touche et récupère ton <strong style="color: white;">plan d'action</strong> pour retrouver la forme.
       </p>
     </div>
 
-    <!-- ── Quiz ───────────────────────────────────────────── -->
     <main style="max-width: 640px; margin: 0 auto; padding: 24px 24px 64px;">
       <ScoreFatigueShell client:load />
     </main>
 
-    <!-- ── Footer ─────────────────────────────────────────── -->
     <footer style="text-align: center; padding: 32px 24px; border-top: 1px solid #1A1A1A;">
       <p style="color: #374151; font-size: 12px;">
         © 2026 Charles Denis — Coach pour dirigeants ·{" "}
